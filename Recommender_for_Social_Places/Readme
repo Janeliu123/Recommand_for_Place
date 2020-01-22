@@ -1,0 +1,61 @@
+===================================================================
+
+CSP584 Final Project
+Recommenders for Public Place.
+Website name: "PlaceFinder"
+
+===================================================================
+
+TEAM:(name, AWID, email)
+Jiajia Liu, A20426786, jliu178@hawk.iit.edu
+Jia Tan, A20433208, jtan21@hawk.iit.edu
+
+===================================================================
+
+Total lines of our project: 19697
+
+===================================================================
+
+Description:(write in short statement)#TODO
+This project is built on Tomcat, MySql, Mongodb, Yelp fusion API and Google API.
+
+===================================================================
+
+Tokens:
+Yelp API token: m3wTJA76DZqAox7RC6l5vZ1KLqS1jOiso39vhcCLFF844bf04DpPxbCwIPr2MpFGc-_e93bIC1vCCHHBH1d23SOkww4EzRpaBCwgSSNDWvTFR-S25vye4vLvqIK8XXYx
+Google API token: AIzaSyDsgqTM5p_ApjNy_yU2alV7uyZUoyQ7yZs
+
+===================================================================
+
+Load project on your own machine:
+
+Prepare:
+    1. Put the folder "Recommander_for_Social_Places" into your own Tomcat server webapps folder
+    2. We will use python package Surprise to implemnet the recommend, so insure you have already installed the surprise
+    3. If not, execute the command: pip install scikit-surprise
+
+I. MySQL (export: ./mysqldump -u root -p finalproject > finalproject.sql)
+    1. Insure you have installed MySQL on OS
+    2. Copy the Recommander_for_Social_Places/data/finalproject.sql to the bin folder of your local MySQL path
+    3. cd Mysql's bin folder, execute this command: mysql -u root -p finalproject < finalproject.sql
+
+II. MongoDB(export: ./mongodump -h 127.0.0.1 -d PlaceReviews -o /Users/janeliu/Desktop/)
+	1. Insure you have installed MongoDB on OS
+	2. Copy the Recommander_for_Social_Places/data/PlaceReviews to the bin folder of your local MongoDB path.
+	3. cd MongoDB's bin folder, execute this command: mongorestore -h 127.0.0.1 -d PlaceReviews --dir .
+
+III. Add your own information to config.txt
+	1. Open Recommander_for_Social_Places/config.txt
+	2. Write your own MySQL user name to "MYSQL_USER"
+	3. Write your own MySQL user password to "MYSQL_PASSWORD"
+	4. Write your own MongoDB's bin path to "MONGODB_BIN" (such like "/usr/local/mongodb/bin")
+
+IV. Run Application:
+    1.Launch MySQL
+    2.Launch MongoDB
+	3.launch Tomcat.
+	4.Open Chrome Browser
+	5.Type url localhost:8081/Recommander_for_Social_Places
+
+===================================================================
+

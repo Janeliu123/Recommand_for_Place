@@ -1,0 +1,98 @@
+===================================================================
+
+CSP584 Final Project
+Recommenders for Public Place.
+Website name: "PlaceFinder"
+
+===================================================================
+
+TEAM:(name, AWID, email)
+Liu, Jiajia, A20426786, jliu178@hawk.iit.edu
+Tan, Jia, A20433208, jtan21@hawk.iit.edu
+
+===================================================================
+
+Total lines of our project: 19697
+
+===================================================================
+
+Description:
+This project is built on Tomcat, MySql, Mongodb, Yelp fusion API and Google API.
+It includes follwing function:
+I. Register:
+    1. Register user name, password, zipcode,gender and your preferences.
+	2. The registration information would be stored in MySQL database using two table: user and preference.
+	3. The preferences would be use to user similarity analysis.
+II. Login
+	1. Login in by user name and password.
+III. Search places:
+    1.Seach places by place name and location in the home page. The place name can either be a specific name or a key word of a place. The location can either be a a zipcode or a location name.
+    2.Search catagory in the home page. The location would be default as the zipcode user filled in when registered.
+IV. Search results:
+    1. Search results is got from both yelp API or google places API. The left page is the list from yelp and the map with flag on the right is from google places.
+    2. Search results can be sorted as best match, rating, review count, distance.
+    3. Search results can be filtered by range, status and price. The filter function can only be implement in the left list, which is implemented by yelp API. The google API doesn’t support the filter.
+    4.Search results can lead to place details by clicking either left list item or right flag on right map.
+V. Place details:
+    1. Place details will shown the pictures, open time, phones, address, and some reviews from yelp.
+    2. User can click write reviews to write review.
+VI. Write Reviews:
+	1. Write review and rating. The data would be stored in mongoDB.
+	2. The rating would be used to recommend “guess u like” by surprise.
+VII. Recommend “similar user like”
+	1. We use user preferences as the parameters to find the user’s similar user. Using surprise in python and implement KNN alogrithm to anaylsis the similarity of users. The result of similar user is stored in “user_output.csv”. 
+	2. The similar user’s post place would be the recommend place for the user. 
+	3. Everytime a user registered, the “UserSimilar.ipynb” python script would run again to analysis the similarity of users again. 
+VIII. Recommend “guess you like”
+	1. We use user’s rating, places and user name from mongoDB to recommend places using surprise by SVD alogrithm. The result of recommend place is stored in “output.csv”.
+	2. Everytime the user post a new review, the python script “RecommendPlace.ipynb” would run again to calculate the recommend place.
+	3. For a new user who hasn’t search or post any review, there will be no guess you like in the home page.
+IX. Search history:
+	1. The MySQL stored the latest search place and location for each user.
+	2. Search history would show the latest search history result. View all would show all the search results.
+	3. For a new user who hasn’t search or post any review, there will be no search history in the home page.
+
+===================================================================
+
+Tokens:
+Yelp API token: m3wTJA76DZqAox7RC6l5vZ1KLqS1jOiso39vhcCLFF844bf04DpPxbCwIPr2MpFGc-_e93bIC1vCCHHBH1d23SOkww4EzRpaBCwgSSNDWvTFR-S25vye4vLvqIK8XXYx
+Google API token: AIzaSyDsgqTM5p_ApjNy_yU2alV7uyZUoyQ7yZs
+
+===================================================================
+
+Load project on your own machine:
+
+Prepare:
+    1. Put the folder "Recommander_for_Social_Places" into your own Tomcat server webapps folder
+    2. We will use python package Surprise to implemnet the recommend, so ensure you have already installed the surprise
+    3. If not, execute the command: pip install scikit-surprise
+    4. Ensure your path of this project does not contain any illegal charater(like space)
+
+I. MySQL
+    1. ensure you have installed MySQL on OS
+    2. Copy the Recommander_for_Social_Places/data/finalproject.sql to the bin folder of your local MySQL path
+    3. cd Mysql's bin folder, execute this command: mysql -u root -p, then input your own mysql user password
+    4. then you login the MySQL database command line, and execute: create database finalproject; (create a new database)
+    5. then execute command: source finalproject.sql (load our project database in your local MySQL database)
+
+II. MongoDB
+	1. ensure you have installed MongoDB on OS
+	2. Copy the Recommander_for_Social_Places/data/PlaceReviews to the bin folder of your local MongoDB path.
+	3. cd MongoDB's bin folder, execute this command: mongoimport -d PlaceReviews -c myReviews --file PlaceReviews --type json
+
+III. Add your own information to config.txt
+	1. Open Recommander_for_Social_Places/config.txt
+	2. Write your own MySQL user name to "MYSQL_USER"
+	3. Write your own MySQL user password to "MYSQL_PASSWORD"
+	4. Write your own MongoDB's bin path to "MONGODB_BIN" (such like "/usr/local/mongodb/bin")
+
+IV. Run Application:
+    1. Launch MySQL
+    2. Launch MongoDB
+	3. launch Tomcat
+	4. Open Chrome Browser
+	5. Type url localhost:8080/Recommender_for_Social_Places
+	6. The test user account is (name:user1, password:111), you can use this test account or you can create your own account in our project
+
+===================================================================
+

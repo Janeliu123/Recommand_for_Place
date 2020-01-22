@@ -1,0 +1,19 @@
+{"_id":{"$oid":"5dd066e81aebf72333cce8cb"},"userName":"user1","businessId":"7Qvh0oFRsoqrO9qNlcMKXQ","reviewrating":3,"reviewtext":"just soso"}
+{"_id":{"$oid":"5dd069131aebf72333cce8cd"},"userName":"user2","businessId":"P3NfoMjBy_o2BTNNZ-5okg","reviewrating":2,"reviewtext":"Too expensive"}
+{"_id":{"$oid":"5dd069651aebf72333cce8cf"},"userName":"user3","businessId":"U5tVK8ChZPP_72ldZPmqAA","reviewrating":5,"reviewtext":"Cool place"}
+{"_id":{"$oid":"5dd06a391aebf72333cce8d1"},"userName":"user4","businessId":"zIXZtgiir9CVF-iZeeAvaQ","reviewrating":4,"reviewtext":"Hard to park, but tasty!"}
+{"_id":{"$oid":"5dd21c567fd356072c1a3308"},"userName":"user5","businessId":"lYKn_TKwzudoIYplL2tGDg","reviewrating":5,"reviewtext":"This shop's food is too fresh, I like that."}
+{"_id":{"$oid":"5dd222727fd356072c1a3316"},"userName":"user6","businessId":"xAZx3d8rEBzKVtOI5Vf5xA","reviewrating":5,"reviewtext":"Excellent!"}
+{"_id":{"$oid":"5dd222da7fd356072c1a3318"},"userName":"user7","businessId":"zEBMoH7ibF3YZrlowkv88A","reviewrating":4,"reviewtext":"Hamburger, love that."}
+{"_id":{"$oid":"5dd223307fd356072c1a331a"},"userName":"user8","businessId":"IApmj3n3RAikUKqhKYiqmA","reviewrating":3,"reviewtext":"cheap, but coffee is not good!"}
+{"_id":{"$oid":"5dd224ab7fd356097919f21c"},"userName":"user9","businessId":"-l_EorQgXO9VImb5AvV4nQ","reviewrating":5,"reviewtext":"Beautiful!"}
+{"_id":{"$oid":"5dd225457fd356097919f21e"},"userName":"user9","businessId":"HoNTrjxDYquS_o_tYupHrg","reviewrating":4,"reviewtext":"Taiwan foods, it's delicious."}
+{"_id":{"$oid":"5dd45ed17fd3566547b568e9"},"userName":"user8","businessId":"qD3-5yqSyPiz-VpJtPsnkg","reviewrating":5,"reviewtext":"simple bar is great."}
+{"_id":{"$oid":"5dd75cf87fd3567d578cdbef"},"userName":"user7","businessId":"t_0jtlPiS9YK86LjhTTleg","reviewrating":5,"reviewtext":"Cheap staff in there."}
+{"_id":{"$oid":"5dd75d537fd3567d578cdbf3"},"userName":"user6","businessId":"hO5ZAyr7yqBJFWN_CMMPNA","reviewrating":4,"reviewtext":"Happy time in here"}
+{"_id":{"$oid":"5dd75d8d7fd3567d578cdbf7"},"userName":"user5","businessId":"TFmh4YqjovxtxQ8K2k3ing","reviewrating":5,"reviewtext":"Love the pork's rab, love that."}
+{"_id":{"$oid":"5dd75de17fd3567d578cdbfb"},"userName":"user4","businessId":"IApmj3n3RAikUKqhKYiqmA","reviewrating":4,"reviewtext":"Love the drink."}
+{"_id":{"$oid":"5dd777337fd3567f05797c51"},"userName":"user3","businessId":"nf5rlV2qL3g2n_BoC4c7Dw","reviewrating":4,"reviewtext":"Love this coffee."}
+{"_id":{"$oid":"5dd83a2a7fd35681c0752ed7"},"userName":"user2","businessId":"X8ZS-dgiMIJvhwf9SaDnjw","reviewrating":4,"reviewtext":"Tasty."}
+{"_id":{"$oid":"5dd84a877fd356833f123ca4"},"userName":"user1","businessId":"yDCyAklnWxnzV675_iweVQ","reviewrating":5,"reviewtext":"Sooooooo beautiful place in Chicago."}
+{"_id":{"$oid":"5dd84d307fd356833f123cac"},"userName":"user1","businessId":"o0DaPvRb4IWH7hUWVCnoGw","reviewrating":3,"reviewtext":"just soso"}

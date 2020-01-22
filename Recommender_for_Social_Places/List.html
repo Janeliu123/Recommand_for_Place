@@ -1,0 +1,97 @@
+<!--============================= DETAIL =============================-->
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7 responsive-wrap">
+                <div class="row detail-filter-wrap">
+                    <div class="col-md-4 featured-responsive">
+                        <div class="detail-filter-text">
+                            <p id="result"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row detail-checkbox-wrap" >
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                        <label class="custom-control custom-checkbox">
+                            <input type="radio" class="custom-control-input" id="BM" value="BM" name="display_method" checked>
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Best Match  </span>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+
+                        <label class="custom-control custom-checkbox">
+                            <input type="radio" class="custom-control-input" id="rating" value="rating" name="display_method">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Rating  </span>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                        <label class="custom-control custom-checkbox">
+                            <input type="radio" class="custom-control-input" id="RC" value="RC" name="display_method">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Review count</span>
+                        </label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+
+                        <label class="custom-control custom-checkbox">
+                            <input type="radio" class="custom-control-input" id="distance" value="distance" name="display_method">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Distance</span>
+                        </label>
+                    </div>
+                    <!-- for user select -->
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+
+                        <label class="custom-control custom-checkbox">
+                            <span class="custom-control-description">Range</span>
+                            <select name="range" id="range">
+                                <option value ="500">500m</option>
+                                <option value ="1000">1000m</option>
+                                <option value="2000">2000m</option>
+                                <option value="4000">4000m</option>
+                                <option value="default" selected="selected">default</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+
+                        <label class="custom-control custom-checkbox">
+                            <span class="custom-control-description">Stats</span>
+                            <select name="stats" id="stats">
+                                <option value ="open">OPEN NOW</option>
+                                <option value ="default" selected>default</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+
+                        <label class="custom-control custom-checkbox">
+                            <span class="custom-control-description">Price</span>
+                            <select name="price" id="price">
+                                <option value ="1">$</option>
+                                <option value ="2">$$</option>
+                                <option value="3">$$$</option>
+                                <option value="4">$$$$</option>
+                                <option value="default" selected="selected">default</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="row light-bg detail-options-wrap" id="list_table">
+                </div>
+                <div class="col-md-5 responsive-wrap map-wrap">
+                    <div class="map-fix">
+                        <!-- data-toggle="affix" -->
+                        <!-- Google map will appear here! Edit the Latitude, Longitude and Zoom Level below using data-attr-*  -->
+                        <div id="map" data-zoom="14"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--    //END DETAIL-->

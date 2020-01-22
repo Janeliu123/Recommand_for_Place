@@ -1,0 +1,239 @@
+<!--============================= FOOTER =============================-->
+<footer class="main-block dark-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p>Copyright &copy; 2019 Listing. All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">JT&JJL</a></p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <ul>
+                        <li><a href="#"><span class="ti-facebook"></span></a></li>
+                        <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
+                        <li><a href="#"><span class="ti-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--//END FOOTER -->
+
+<!-- jQuery, Bootstrap JS. -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var category = document.getElementById('category').value;
+    var loc = document.getElementById('location').value;
+    var url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + category + "&location=" + loc;
+    var display_method ="best_match";
+    var display_range = 40000;
+    var display_stats = false;
+    var display_price = "1,2,3,4";
+    display();
+    $('input[type=radio][name=display_method]').change(function() {
+        if (this.value == 'BM') {
+            display_method = "best_match";
+        }else if (this.value == 'rating') {
+            display_method = "rating";
+        }else if (this.value == 'RC') {
+            display_method = "review_count";
+        }else if (this.value == 'distance') {
+            display_method = "distance";
+        }
+        display();
+    });
+    $('select[name=range]').change(function() {
+        if (this.value == '500') {
+            display_range = 500;
+        }else if (this.value == '1000') {
+            display_range = 1000;
+        }else if (this.value == '2000') {
+            display_range = 2000;
+        }else if (this.value = '4000'){
+            display_range = 4000;
+        }else{
+            display_range = 40000;
+        }
+        display();
+    });
+    $('select[name=stats]').change(function() {
+        if (this.value == 'open') {
+            display_stats = true;
+        }else {
+            display_stats = false;
+        }
+        display();
+    });
+    $('select[name=price]').change(function() {
+        if (this.value == '1') {
+            display_price = "1";
+        }else if (this.value == '2') {
+            display_price = "2";
+        }else if (this.value == '3') {
+            display_price = "3";
+        }else if (this.value = '4'){
+            display_price = "4";
+        }else{
+            display_price = "1,2,3,4";
+        }
+        display();
+    });
+    function display()
+    {
+        $('#list_table').empty();
+        $('#result').empty();
+        var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + category + "&location=" + loc + "&sort_by=" + display_method + "&radius="+display_range+"&open_now="+display_stats+"&price="+display_price;
+        $.ajax({
+            url: myurl,
+            headers: {
+                'Authorization': 'Bearer m3wTJA76DZqAox7RC6l5vZ1KLqS1jOiso39vhcCLFF844bf04DpPxbCwIPr2MpFGc-_e93bIC1vCCHHBH1d23SOkww4EzRpaBCwgSSNDWvTFR-S25vye4vLvqIK8XXYx',
+            },
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var totalresults = data.total;
+                if (totalresults > 0) {
+                    // Display a header on the page with the number of results
+                    document.getElementById('result').innerHTML = totalresults + " Results";
+                    $.each(data.businesses, function (i, item) {
+                        // Store each business's object in a variable
+                        var id = item.id;
+                        var alias = item.alias;
+                        var phone = item.display_phone;
+                        if (phone == "")
+                            phone = "NO PHONE"
+                        var image = item.image_url;
+                        var name = item.name;
+                        var rating = item.rating;
+                        var reviewcount = item.review_count;
+                        var address = item.location.address1;
+                        var city = item.location.city;
+                        var state = item.location.state;
+                        var zipcode = item.location.zip_code;
+                        var price = item.price;
+                        var url = item.url;
+                        var is_closed = item.is_closed;
+                        var stats;
+                        if (is_closed == false)
+                            stats = "OPEN NOW";
+                        else
+                            stats = "CLOSED NOW";
+                        var latitude = item.coordinates.latitude;
+                        var longitude = item.coordinates.longitude;
+                        $('#list_table').append('<div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive">\n' +
+                            '                            <div class="featured-place-wrap">\n' +
+                            '                                <a href="Detail?from=yelp&id=' + id + '">\n' +
+                            '                                   <img src="' + image + '" height="300" width="291" alt="#">\n' +
+                            '                                   <span class="featured-rating-orange ">' + rating + '</span>\n' +
+                            '                                   <div class="featured-title-box">\n' +
+                            '                                       <h6>' + name + '</h6>' +
+                            '                                       <p>' + reviewcount + ' Reviews</p> <span> . </span>' +
+                            '                                       <p><span>' + price + '</span></p>\n' +
+                            '                                  <ul>\n' +
+                            '                                   <li><span class="icon-location-pin"></span>\n' +
+                            '                                       <p>' + address + ', ' + city + ', ' + state + ' ' + zipcode + '</p>\n' +
+                            '                                   </li>\n' +
+                            '                                   <li><span class="icon-screen-smartphone"></span>\n' +
+                            '                                       <p>' + phone + '</p>\n' +
+                            '                                   </li>\n' +
+                            '                                   <li><span class="icon-link"></span>\n' +
+                            '                                       <p>https://www.yelp.com</p>\n' +
+                            '                                   </li></ul>\n' +
+                            '                                       <div class="bottom-icons">\n' +
+                            '                                       <div class="closed-now">' + stats + '</div>\n' +
+                            '                                       <span class="ti-heart"></span>\n' +
+                            '                                       <span class="ti-bookmark"></span>\n' +
+                            '                              </div></div></a></div></div>');
+                    });
+                }else{
+                    document.getElementById('result').innerHTML = "0 Results";
+                }
+            }
+        });
+    }
+    //display in google map
+    function myMap() {
+        //build a new google map
+        var geocoder = new google.maps.Geocoder();
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -33.847404, lng: 150.6517802},
+            zoom: 13,
+            scrollwheel: false
+        });
+        var address=loc;
+        geocoder.geocode({'address':address},function(results,status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+            }
+        });
+        //find place by google api
+        var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        var request = {
+            query: category+' '+loc
+            // key: "AIzaSyBySccAlftrj__zEmBDdeKHRdrZro4VuZA"
+        };
+        service.textSearch(request, function (data, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                $.each(data, function (i, item) {
+                    //mark each place in google map
+                    var marker = new google.maps.Marker({
+                        position: item.geometry.location,
+                        map: map,
+                        title: item.name
+                    });
+                    marker.setMap(map);
+                    marker.addListener('mouseover', function() {
+                        //display infos about this place
+                        var price = '';
+                        for(var i=0;i<item.price_level;i++)
+                        {
+                            price=price+'$';
+                        }
+                        var open = '';
+                        if(item.opening_hours.open_now == false)
+                            open = 'CLOSED NOW';
+                        else
+                            open = 'OPEN NOW';
+                        console.log(item.geometry.location.lat());
+                        infowindow.setContent('<div class="featured-place-wrap">\n' +
+                            '                                   <img src="' + item.photos[0].getUrl() + '" height="250" width="191" alt="#">\n' +
+                            '                                   <div class="featured-title-box">\n' +
+                            '                                       <h6>' + item.name + '</h6>' +
+                            '                                       <p>Rating: ' + item.rating + ' </p> <span> . </span>' +
+                            '                                       <p><span>' + price + '</span></p>\n' +
+                            '                                  <ul>\n' +
+                            '                                   <li><span class="icon-location-pin"></span>\n' +
+                            '                                       <p>' + item.formatted_address + '</p>\n' +
+                            '                                   </li>\n' +
+                            '                                   <li><span class="icon-link"></span>\n' +
+                            '                                       <p>https://www.google.com</p>\n' +
+                            '                                   </li></ul>\n' +
+                            '                                       <div class="bottom-icons">\n' +
+                            '                                       <div class="closed-now">' + open + '</div>\n' +
+                            '                                       <span class="ti-heart"></span>\n' +
+                            '                                       <span class="ti-bookmark"></span>\n' +
+                            '                              </div></div></div>');
+                        infowindow.open(map, this);
+                    });
+                    // assuming you also want to hide the infowindow when user mouses-out
+                    marker.addListener('mouseout', function() {
+                        infowindow.close();
+                    });
+                    google.maps.event.addListener(marker, 'click', function () {
+                        var transfer_loc = 'Detail?from=google&term='+item.name+'&latitude='+item.geometry.location.lat()+'&longitude='+item.geometry.location.lng();
+                        window.location.href=transfer_loc;
+                    });
+                });
+            }
+        });
+    }
+</script>
+<!-- Map JS (Please change the API key below. Read documentation for more info) -->
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap&key=AIzaSyBySccAlftrj__zEmBDdeKHRdrZro4VuZA&libraries=places"></script>
+</body>
+
+</html>
